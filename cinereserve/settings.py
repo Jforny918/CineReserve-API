@@ -57,7 +57,8 @@ WSGI_APPLICATION = 'cinereserve.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"postgresql://{os.environ.get('DB_USER', 'cinereserve_user')}:{os.environ.get('DB_PASSWORD', 'cinereserve_pass')}@{os.environ.get('DB_HOST', 'localhost')}:{os.environ.get('DB_PORT', '5432')}/{os.environ.get('DB_NAME', 'cinereserve')}"
+        default=f"postgresql://{os.environ.get('DB_USER', 'cinereserve_user')}:{os.environ.get('DB_PASSWORD', 'cinereserve_pass')}@{os.environ.get('DB_HOST', 'localhost')}:{os.environ.get('DB_PORT', '5432')}/{os.environ.get('DB_NAME', 'cinereserve')}",
+        conn_max_age=600
     )
 }
 

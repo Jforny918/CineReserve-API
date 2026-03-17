@@ -1,11 +1,13 @@
 import os
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
 
 
 def main():
-    load_dotenv(Path(__file__).resolve().parent / '.env')
+    env_path = Path(__file__).resolve().parent / '.env'
+    if env_path.exists():
+        from dotenv import load_dotenv
+        load_dotenv(env_path)
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cinereserve.settings')
     try:
