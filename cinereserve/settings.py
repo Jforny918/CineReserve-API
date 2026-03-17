@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,14 +56,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cinereserve.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'cinereserve'),
-        'USER': os.environ.get('DB_USER', 'cinereserve_user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'cinereserve_pass'),
-        'HOST': os.environ.get('DB_HOST', 'db'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=f"postgresql://{os.environ.get('DB_USER', 'cinereserve_user')}:{os.environ.get('DB_PASSWORD', 'cinereserve_pass')}@{os.environ.get('DB_HOST', 'localhost')}:{os.environ.get('DB_PORT', '5432')}/{os.environ.get('DB_NAME', 'cinereserve')}"
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [

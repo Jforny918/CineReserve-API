@@ -28,6 +28,21 @@ files = [
 ]
 
 [[package]]
+name = "dj-database-url"
+version = "3.1.2"
+description = "Use Database URLs in your Django Application."
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "dj_database_url-3.1.2-py3-none-any.whl", hash = "sha256:544e015fee3efa5127a1eb1cca465f4ace578265b3671fe61d0ed7dbafb5ec8a"},
+    {file = "dj_database_url-3.1.2.tar.gz", hash = "sha256:63c20e4bbaa51690dfd4c8d189521f6bf6bc9da9fcdb23d95d2ee8ee87f9ec62"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "django"
 version = "6.0.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -621,4 +636,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "1484b3c8519eff23f1386f7bb8bd675f45bf8f090ab4098de10c783fdbd46a4b"
+content-hash = "f81b7be0b62b0f88c1a1a5d70cf8104d153978f331d009a5be130f69111328bb"
