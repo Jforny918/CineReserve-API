@@ -6,7 +6,7 @@ from .serializers import MovieSerializer, SessionSerializer
 
 
 class MovieListView(generics.ListAPIView):
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.all().order_by('id')
     serializer_class = MovieSerializer
     permission_classes = [permissions.AllowAny]
     filter_backends = [SearchFilter, OrderingFilter]
