@@ -3,7 +3,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import Movie, Session
 from .serializers import MovieSerializer, SessionSerializer
-
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAdminUser
 
 class MovieListView(generics.ListAPIView):
     queryset = Movie.objects.all().order_by('id')
@@ -12,6 +13,11 @@ class MovieListView(generics.ListAPIView):
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title', 'genre']
     ordering_fields = ['title', 'created_at']
+
+class MovieViewSet(ModelViewSet):
+    queryset = Movie.objects.all().order_by('id')
+    serializer_class = MovieSerializer
+    permission_classes = [IsAdminUser]
 
 
 class MovieDetailView(generics.RetrieveAPIView):
